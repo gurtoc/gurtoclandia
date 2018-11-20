@@ -4,6 +4,7 @@ public class Hero implements IAttacOfHero {
     private int mana;
     private String name;
     private int attackPower;
+    private String typAtaku;
 
     public int getAttackPower() {
         return attackPower;
@@ -69,4 +70,8 @@ public class Hero implements IAttacOfHero {
         System.out.println("Użycie slabego attacku");
         return attackPower/2;
     }
+
+
+
+
 }
