@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Story story = new Story();
+
         Hero shadya = new Hero();
+        Story story = new Story(shadya);
+        Weapons weapons = new Weapons(5);
+
         Rat rat = new Rat(10, 0, "Szczurek", 1);
 
         story.begginingOfStory();
@@ -19,7 +22,7 @@ public class Main {
         shadya.setMana(scanner.nextInt());
         System.out.println("podaj swoją siłę ataku");
         shadya.setAttackPower(scanner.nextInt());
-        scanner.close();
+        //scanner.close();
 
         System.out.println("A więc " + shadya.getName() + " twoje życia to " + shadya.getHealth() + " twoja mana to: " + shadya.getMana() + " a siła ataku to: " + shadya.getAttackPower());
         System.out.println();
@@ -39,36 +42,22 @@ public class Main {
                 Thread.sleep(1000);
                 hpAfterAttack = hpAfterAttack - shadya.WeakAttack();
 
-                 hpHeroAfterAttack = hpHeroAfterAttack - rat.getAttack();
+                hpHeroAfterAttack = hpHeroAfterAttack - rat.getAttack();
                 System.out.println(rat.getName() + " kontratakuje! " + shadya.getName() + " ma " + hpHeroAfterAttack + " hp");
 
                 System.out.println(shadya.getName() + " ponawia atak! Szczur ma: " + hpAfterAttack + " hp");
                 System.out.println();
-//                if (hpAfterAttack>hpHeroAfterAttack){
-//                    System.out.println("Szczur wygrał");
-//                }else{
-//                    System.out.println("shadya wygrała");
-//                }
 
-            } while ( hpHeroAfterAttack>=0 && hpAfterAttack>=0);
 
-                System.out.println("szczur nie żyje!");
+            } while (hpHeroAfterAttack >= 0 && hpAfterAttack >= 0);
+
+            System.out.println("szczur nie żyje!");
+            System.out.println();
 
         }
 
-//        if (shadya.WeakAttack() > rat.getHealth()) {
-//            System.out.println(shadya.getName() + " zabiła szczura w spiżarni jednym ciosem");
-//        } else {
-//            for (int i = 0; i < rat.getHealth(); i++) {
-//                int hpAfterAttack = rat.getHealth() - shadya.getAttackPower();
-//                if (hpAfterAttack <= 0) {
-//                    System.out.println("Szczur is dead");
-//                } else {
-//                    System.out.println("szczurowi pozostało punktów życia: " + hpAfterAttack);
-//                }
-//                ;
-//            }
-//        }
+        story.quest1Complete();
+        story.quest1Reward();
 
 
     }
